@@ -1,100 +1,174 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 # Setup Webdriver
-options = webdriver.ChromeOptions()
-options.add_experimental_option("detach", True)
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-wait = WebDriverWait(driver, 10)
-driver.maximize_window()
-
-def click(xpath):
-   # """ Waits for an element to be clickable and clicks it."""
-    wait.until(ec.element_to_be_clickable((By.XPATH, xpath))).click()
+driver = webdriver.Chrome()
 
 # Navigate to the login page
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+driver.maximize_window()
+time.sleep(5)
 
 # Login
-wait.until(ec.presence_of_element_located((By.NAME, "username"))).send_keys("Admin")
+driver.find_element(By.NAME, "username").send_keys("Admin")
 driver.find_element(By.NAME, "password").send_keys("admin123")
 driver.find_element(By.XPATH, "//button[@type='submit']").click()
+time.sleep(5)
 
 # Click "Admin" in the sidebar menu
-admin_module = wait.until(ec.element_to_be_clickable((By.XPATH, "//span[text()='Admin']")))
-admin_module.click()
-
-# Wait for Admin page to load
-wait.until(ec.presence_of_element_located((By.XPATH, "//h6[text()='Admin']")))
+driver.find_element(By.XPATH, "//span[text()='Admin']").click()
+time.sleep(5)
 print("✅ Successfully navigated to the Admin page.")
 
 # Menu Navigation and Actions:
 # User Management
-click("//span[text()='User Management ']")
-click("//a[text()='Users']")
+driver.find_element(By.XPATH,"//span[text()='User Management ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Users']").click()
+time.sleep(5)
 
 # Job
-click("//span[text()='Job ']")
-click("//a[text()='Job Titles']")
-click("//span[text()='Job ']")
-click("//a[text()='Pay Grades']")
-click("//span[text()='Job ']")
-click("//a[text()='Employment Status']")
-click("//span[text()='Job ']")
-click("//a[text()='Job Categories']")
-click("//span[text()='Job ']")
-click("//a[text()='Work Shifts']")
+driver.find_element(By.XPATH,"//span[text()='Job ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Job Titles']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Job ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Pay Grades']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Job ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Employment Status']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Job ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Job Categories']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Job ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Work Shifts']").click()
+time.sleep(5)
 
 # Organization
-click("//span[text()='Organization ']")
-click("//a[text()='General Information']")
-click("//span[text()='Organization ']")
-click("//a[text()='Locations']")
-click("//span[text()='Organization ']")
-click("//a[text()='Structure']")
+driver.find_element(By.XPATH,"//span[text()='Organization ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='General Information']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Organization ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Locations']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Organization ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Structure']").click()
+time.sleep(5)
 
 # Qualification
-click("//span[text()='Qualifications ']")
-click("//a[text()='Skills']")
-click("//span[text()='Qualifications ']")
-click("//a[text()='Education']")
-click("//span[text()='Qualifications ']")
-click("//a[text()='Licenses']")
-click("//span[text()='Qualifications ']")
-click("//a[text()='Languages']")
-click("//span[text()='Qualifications ']")
-click("//a[text()='Memberships']")
+driver.find_element(By.XPATH,"//span[text()='Qualifications ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Skills']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Qualifications ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Education']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Qualifications ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Licenses']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Qualifications ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Languages']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Qualifications ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Memberships']").click()
+time.sleep(5)
 
 # Nationalities
-click("//a[text()='Nationalities']")
+driver.find_element(By.XPATH,"//a[text()='Nationalities']").click()
+time.sleep(5)
 
 # Corporate Branding
-click("//a[text()='Corporate Branding']")
+driver.find_element(By.XPATH,"//a[text()='Corporate Branding']").click()
+time.sleep(5)
 
 # Configuration
-click("//span[text()='Configuration ']")
-click("//a[text()='Email Configuration']")
-click("//span[text()='Configuration ']")
-click("//a[text()='Email Subscriptions']")
-click("//span[text()='Configuration ']")
-click("//a[text()='Localization']")
-click("//span[text()='Configuration ']")
-click("//a[text()='Language Packages']")
-click("//span[text()='Configuration ']")
-click("//a[text()='Modules']")
-click("//span[text()='Configuration ']")
-click("//a[text()='Social Media Authentication']")
-click("//span[text()='Configuration ']")
-click("//a[text()='Register OAuth Client']")
-click("//span[text()='Configuration ']")
-click("//a[text()='LDAP Configuration']")
+driver.find_element(By.XPATH,"//span[text()='Configuration ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Email Configuration']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Configuration ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Email Subscriptions']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Configuration ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Localization']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Configuration ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Language Packages']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Configuration ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Modules']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Configuration ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Social Media Authentication']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Configuration ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='Register OAuth Client']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//span[text()='Configuration ']").click()
+time.sleep(5)
+
+driver.find_element(By.XPATH,"//a[text()='LDAP Configuration']").click()
+time.sleep(5)
 
 # Logout
-click("//span[@class='oxd-userdropdown-tab']")
-click("//a[text()='Logout']")
+driver.find_element(By.XPATH,"//span[@class='oxd-userdropdown-tab']").click()
+time.sleep(5)
+driver.find_element(By.XPATH,"//a[text()='Logout']").click()
 driver.quit()
